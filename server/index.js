@@ -12,7 +12,7 @@ require('dotenv').config();
 const app = express()
 app.use(express.json())
 app.use (cors({
-    origin: ["http://localhost:5173"],
+    origin: ["login-forgot-frontend.netlify.app"],
     methods:["GET","POST"],
     credentials:true
 }))
@@ -95,7 +95,7 @@ app.post('/forgot-password', (req, res) => {
             from: 'johnkennady2201@gmail.com',
             to: user.email,
             subject: 'Reset Password Link',
-            text: `http://localhost:5173/reset_password/${user._id}/${token}`
+            text: `login-forgot-frontend.netlify.app/reset_password/${user._id}/${token}`
           };
           
           transporter.sendMail(mailOptions, function(error, info){
